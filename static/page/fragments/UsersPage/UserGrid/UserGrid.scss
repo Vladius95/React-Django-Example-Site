@@ -1,0 +1,12 @@
+$imageSize: 150px;
+
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($imageSize, 1fr));
+  grid-gap: 16px;
+
+  &__avatar {
+    width: $imageSize;
+    height: $imageSize;
+  }
+}

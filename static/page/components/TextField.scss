@@ -1,0 +1,10 @@
+@import "../css/consts";
+
+.text-field {
+    border: 1px solid transparent;
+    transition: background-color .5s ease, border .5s ease;
+    &__error {
+        border: 1px solid $error-color;
+        background-color: $error-color-lighten!important;
+    }
+}

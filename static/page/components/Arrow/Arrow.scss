@@ -1,0 +1,15 @@
+.arrow {
+    background-position: center;
+    background-repeat: no-repeat;
+    &-up {
+        transform: rotate(180deg);
+    }
+
+    &-right {
+        transform: rotate(-90deg);
+    }
+
+    &-left {
+        transform: rotate(90deg);
+    }
+}

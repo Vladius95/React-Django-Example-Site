@@ -1,0 +1,10 @@
+.masonry-grid {
+  display: flex;
+  // flex-wrap: wrap;
+  // justify-content: center;
+  width: 100%;
+
+  &__cell {
+    padding: 20px;
+  }
+}

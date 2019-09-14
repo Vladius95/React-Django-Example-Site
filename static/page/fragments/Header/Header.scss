@@ -1,0 +1,24 @@
+@import "../../css/consts.scss";
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  padding: 16px 0;
+}
+
+.navigation {
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    font-size: 18px;
+    line-height: 24px;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}

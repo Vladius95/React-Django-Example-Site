@@ -1,0 +1,38 @@
+@import "../../css/consts.scss";
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  &__not-empty {
+    .search__clear-btn {
+      visibility: visible;
+    }
+  }
+
+  &__input {
+    font-size: 13px;
+    padding: 4px 8px;
+    width: 100%;
+    background-color: $secondary-gray;
+    margin-right: 25px;
+    border-radius: 3px;
+  }
+
+  &__clear-btn {
+    visibility: hidden;
+    position: absolute;
+    right: 0;
+  }
+
+  &__clear {
+    height: 15px;
+  }
+
+  &__loupe {
+    height: 15px;
+    margin-right: 10px;
+  }
+}

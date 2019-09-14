@@ -1,0 +1,38 @@
+.user-photo {
+  position: relative;
+
+  &__image {
+    max-height: 1200px;
+    border-radius: 16px;
+  }
+
+  &__likes {
+    display: flex;
+    align-items: center;
+    padding: 16px 0;
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  &__like-image {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+  }
+
+  &__like-image-count {
+    margin-right: 8px;
+  }
+
+  &__like {
+    &-big {
+      width: 80px;
+      height: 80px;
+    }
+
+    &-small {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

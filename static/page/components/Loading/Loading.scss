@@ -1,0 +1,159 @@
+@function factorial($n) {
+  $val: 1;
+
+  @for $i from 1 to $n + 1 {
+    $val: $i * $val;
+  }
+
+  @return $val;
+}
+
+@function pow($v, $n) {
+  @if $n == 0 {
+    @return 1;
+  }
+
+  $val: $v;
+  @for $i from 0 to $n - 1 {
+    $val: $val * $v;
+  }
+
+  @return $val;
+}
+
+$PI: 3.14159265358979323846;
+$PI2: $PI * 2;
+$HALF_PI: $PI / 2;
+$QUARTER_PI: $PI / 4;
+
+$SIN_ITERATION: 10;
+
+@function sin($angle) {
+  $rad: $angle * $PI / 180;
+  $res: 0;
+
+  @for $i from 0 to 50 {
+    $res: $res + pow(-1, $i) * pow($rad, 2 * $i + 1) / factorial(2 * $i + 1);
+  }
+
+  @return $res;
+}
+
+@function cos($a) {
+  @return sin($a + 90);
+}
+
+@function tan($a) {
+  @return sin($a) / cos($a);
+}
+
+@mixin keyframes-all($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+/** ANIMATIONS **/
+@keyframes animatron {
+  from {
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  }
+  to {
+    transform: translate3d(-50%, -50%, 0) rotate(360deg);
+  }
+}
+
+@keyframes animatronReverse {
+  from {
+    transform: translate3d(-50%, -50%, 0) rotate(360deg);
+  }
+  to {
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  }
+}
+
+@import "../../css/consts.scss";
+
+// длина вписывающего шестиугольника
+$hexagonCoreMaxLength: 200px;
+$hexagonBorderThickness: 8px;
+$hexagonBorderColor: $primary-teal;
+
+/** DECLARATIONS **/
+.hexagon {
+  margin: auto;
+  position: relative;
+  box-sizing: border-box;
+
+  &.clockwise-direction {
+    animation: animatron 4s linear infinite;
+  }
+
+  &.anti-clockwise-direction {
+    animation: animatronReverse 4s linear infinite;
+  }
+
+  &,
+  &:before,
+  &:after {
+    height: 0;
+    border-top: $hexagonBorderThickness solid $hexagonBorderColor;
+    border-bottom: $hexagonBorderThickness solid $hexagonBorderColor;
+  }
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    margin-top: -$hexagonBorderThickness;
+  }
+
+  &:before {
+    transform: rotate(120deg);
+  }
+
+  &:after {
+    transform: rotate(240deg);
+  }
+
+  @for $i from 1 to 5 {
+    &.size-#{$i},
+    &.size-#{$i}:after,
+    &.size-#{$i}:before {
+      $hexagonCoreLength: $hexagonCoreMaxLength * $i / 4;
+      width: tan(30) * ($hexagonCoreLength + 2 * $hexagonBorderThickness);
+      padding-bottom: $hexagonCoreLength;
+    }
+  }
+}
+
+/** Core centering logic, ignore the following **/
+// html,
+// body,
+.center {
+  width: 100%;
+  height: 100%;
+}
+
+.center {
+  position: relative;
+
+  .hexagon {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+  }
+}

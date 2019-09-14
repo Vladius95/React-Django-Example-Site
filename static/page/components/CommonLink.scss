@@ -1,0 +1,41 @@
+@import "../css/consts.scss";
+
+a {
+  transition: opacity 0.3s ease;
+  outline-color: $primary-teal;
+  color: $primary-teal;
+
+  // &-disabled {
+  //   opacity: 0.5;
+  //   pointer-events: none;
+  //   user-select: none;
+  // }
+
+  &:link {
+    color: $primary-teal;
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: $primary-teal;
+    text-decoration: none;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
+}
+
+// .content-link {
+//   transition: opacity 0.3s ease;
+//   outline-color: $primary-teal;
+
+//   &-disabled {
+//     pointer-events: none;
+//     user-select: none;
+//   }
+// }

@@ -1,0 +1,37 @@
+.infinite-loader {
+  display: flex;
+  justify-content: center;
+
+  &__circle {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.1);
+    margin-right: 15px;
+    border-radius: 50%;
+    animation: indication 1.6s linear infinite;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+#circle-one {
+  animation-delay: 0.4s;
+}
+
+#circle-two {
+  animation-delay: 0.8s;
+}
+
+#circle-three {
+  animation-delay: 1.2s;
+}
+
+@keyframes indication {
+  0% {}
+  50% {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  100% {}
+}

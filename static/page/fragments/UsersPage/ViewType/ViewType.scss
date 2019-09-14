@@ -1,0 +1,19 @@
+.view-type {
+  display: flex;
+  &__image {
+    height: 24px;
+    opacity: 0.5;
+
+    &--selected {
+      opacity: 1;
+    }
+  }
+
+  &__item {
+    width: 24px;
+    height: 24px;
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+}

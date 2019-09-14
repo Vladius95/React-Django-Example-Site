@@ -1,0 +1,29 @@
+.users-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px 0;
+
+  &__search {
+    width: 420px;
+  }
+
+  &__empty-list-message {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+  }
+
+  &__loader {
+    margin: 40px 0;
+  }
+
+  &__user-grid {
+    width: calc(100% - 300px);
+    padding: 32px 0;
+  }
+}
+
+.users-page-loading {
+  padding: 150px 0;
+}

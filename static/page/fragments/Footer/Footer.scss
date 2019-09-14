@@ -1,0 +1,15 @@
+@import "../../css/consts.scss";
+
+.footer {
+  display: flex;
+  align-items: center;
+  padding-left: 150px;
+
+  height: 100px;
+
+  background-color: $primary-teal;
+  color: white;
+
+  font-size: 19px;
+  line-height: 24px;
+}

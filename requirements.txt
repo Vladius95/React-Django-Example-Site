@@ -1,0 +1,8 @@
+django
+psycopg2
+djangorestframework
+djangorestframework-jwt
+django-cors-headers
+markdown
+django-filter
+django-webpack-loader

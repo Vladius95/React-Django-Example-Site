@@ -1,8 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
-const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+// const BundleTracker = require("webpack-bundle-tracker");
 
 const definePlugin = new webpack.DefinePlugin({
   __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || "true"))
@@ -24,28 +22,16 @@ module.exports = {
       static: path.resolve("./static")
     }
   },
-  plugins: [
-    definePlugin,
-    new BrowserSyncPlugin({
-      host: process.env.IP || "localhost",
-      port: process.env.PORT || 3000,
-      server: {
-        baseDir: "build",
-        index: "index.html"
-      }
-    }),
-    new CopyWebpackPlugin([
-      {
-        from: path.join(__dirname, "data/**/*"),
-        to: path.join(__dirname, "build")
-      }
-    ]),
-    new HtmlWebpackPlugin({
-      title: "React Examples",
-      template: "template.html",
-      filename: "index.html" // output file
-    })
-  ],
+  // devServer: {
+  //   contentBase: "./build",
+  //   hot: true
+  // },
+  // plugins: [
+  //   definePlugin,
+  //   new webpack.HotModuleReplacementPlugin({filename: './webpack-stats.json'}),
+  //   new webpack.NoEmitOnErrorsPlugin(), // don't reload if there is an error
+  //   new BundleTracker({ filename: "./webpack-stats.json" })
+  // ],
   module: {
     rules: [
       {

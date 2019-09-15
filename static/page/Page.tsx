@@ -12,13 +12,18 @@ import { Provider } from "react-redux";
 import { mergedReducers } from "static/stores/root";
 import { createStore } from "redux";
 
+import { isAuthorizated } from "static/utils/requests";
+import { LoginPage } from "./fragments/LoginPage/LoginPage";
+
 import "./Page.scss";
 
 const rootStore = createStore(mergedReducers);
-
-const Login = () => <section className="login">Come in, please</section>;
-
+const SignUp = () => <div>SIGNUP, PLEASE</div>;
 export class Page extends React.Component {
+  componentDidMount() {
+    isAuthorizated();
+  }
+
   render() {
     return (
       <Provider store={rootStore}>
@@ -39,7 +44,8 @@ export class Page extends React.Component {
       <main className="page-layout">
         <Switch>
           <Redirect exact from="/" to="/login/" />
-          <Route key="login" path="/login/" component={Login} />
+          <Route key="registration" path="/registration/" component={SignUp} />
+          <Route key="login" path="/login/" component={LoginPage} />
           <Route key="users" path="/users/" component={UsersPageConnect} />
           <Route key="user" path="/user/:id" component={UserPageConnect} />
           <Route key="photos" path="/photos/:uid/:pid" component={UserPhotoConnect} />

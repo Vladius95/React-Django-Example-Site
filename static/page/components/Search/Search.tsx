@@ -9,7 +9,7 @@ const LoupeIcon = require("./images/loupe.svg");
 
 import "./Search.scss";
 
-interface SearchProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface SearchProps extends React.InputHTMLAttributes<HTMLInputElement> {
   onClear: VoidFunction;
   extraClass?: string;
 }

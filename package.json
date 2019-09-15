@@ -6,7 +6,7 @@
   "scripts": {
     "watch": "webpack --progress --watch",
     "build": "webpack --progress",
-    "runserver": "node ./server/server.js"
+    "runserver": "python manage.py runserver"
   },
   "author": "vladius",
   "license": "ISC",

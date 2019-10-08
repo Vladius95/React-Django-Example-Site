@@ -1,12 +1,14 @@
 {
   "name": "react-typescript-less-localserver-starterpack",
   "version": "1.0.0",
-  "description": "react + typescript + less + general dependencies + local server startpack",
+  "description": "React Django Site Example",
   "main": "static/index.ts",
   "scripts": {
     "watch": "webpack --progress --watch",
     "build": "webpack --progress",
-    "runserver": "python manage.py runserver"
+    "runserver": "python manage.py runserver",
+    "makemigrations": "python manage.py makemigrations",
+    "migrate": "python manage.py migrate"
   },
   "author": "vladius",
   "license": "ISC",
@@ -52,6 +54,7 @@
     "query-string": "^6.8.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-dropzone": "^10.1.8",
     "react-input-mask": "^2.0.4",
     "react-redux": "^7.1.0",
     "react-router": "^5.0.1",

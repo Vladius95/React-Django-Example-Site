@@ -1,10 +1,10 @@
+import "./LoginPage.scss";
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
-import { logIn, signUp } from "static/utils/requests";
+import { logIn, signUp, auth } from "static/utils/requests";
 import { TextField } from "static/page/components/TextField";
 import { Button } from "static/page/components/buttons/CommonButton";
 
-import "./LoginPage.scss";
 import { RouteLink } from "static/page/components/CommonLink";
 
 export interface LoginPageProps extends RouteComponentProps {}
@@ -21,10 +21,13 @@ export const LoginPage: React.FC<LoginPageProps> = React.memo(() => {
     setPassword(e.target.value);
   }, []);
 
-  const _onSubmit = React.useCallback((e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    logIn({ username: login, password });
-  }, []);
+  const _onSubmit = React.useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      auth({ email: login, password });
+    },
+    [login, password]
+  );
   return (
     <article className="login-page">
       <header className="login-page__header">
@@ -49,8 +52,12 @@ export const LoginPage: React.FC<LoginPageProps> = React.memo(() => {
         />
         <TextField
           key="password"
+          type="password"
           placeholder="Enter your password"
           onChange={onPasswordChange}
+          autoCorrect="off"
+          autoComplete="off"
+          spellCheck={false}
           required
           extraClass="login-page__text-field"
         />

@@ -1,0 +1,20 @@
+.avatar-selection {
+  &__image {
+    border-width: 2px;
+    border-style: solid;
+    border-color: transparent;
+    cursor: pointer;
+
+    &--active {
+      border-color: #2196f3;
+    }
+
+    &--accepted {
+      border-color: #00e676;
+    }
+
+    &--rejected {
+      border-color: #ff1744;
+    }
+  }
+}

@@ -19,7 +19,7 @@ export const UserDescription: React.FC<UserDescriptionProps> = React.memo(({ use
       <UserAvatar avatar={user.avatar} extraClass="user-description__avatar" />
       <div className="user-description__desc">
         <div className="user-description__bio">
-          <strong className="user-description__name">{user.name}</strong>
+          <strong className="user-description__name">{user.firstname + user.secondname}</strong>
           <span className="user-description__age">{user.age} years old</span>
         </div>
         <p className="user-description__location">Russia, Moscow</p>

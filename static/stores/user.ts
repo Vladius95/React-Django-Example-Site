@@ -16,13 +16,7 @@ function toPhoto(id: number, userId: number): Photo {
 export const userReducer: Reducer<UserState, UserAction> = (user: UserState = [], action: UserAction) => {
   switch (action.type) {
     case "USER_SUCCESS":
-      return [
-        {
-          ...action.user,
-          avatar: `data/users/${action.user.id}/${action.user.id}.jpg`,
-          photos: (action.user.photos as any).map(p => toPhoto(p, action.user.id))
-        }
-      ];
+      return [action.user];
   }
   return user;
 };

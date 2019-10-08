@@ -14,8 +14,8 @@ export const UserList: React.FC<UserListProps> = ({ users }) => {
   return (
     <ul className="user-list">
       {users.map(user => (
-        <li key={user.id} className="user-list__item">
-          <Link to={`/user/${user.id}`}>
+        <li key={user.login} className="user-list__item">
+          <Link to={`/user/${user.login}`}>
             <UserDescription user={user} />
           </Link>
         </li>

@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import current_user, UserList
+from core.views import current_user, CreateUser
 
-urlpatterns = [path("current_user/", current_user), path("users/", UserList.as_view())]
+urlpatterns = [path("log-in/", current_user), path("sign-up/", CreateUser.as_view())]
 

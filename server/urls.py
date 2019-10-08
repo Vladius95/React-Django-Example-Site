@@ -16,14 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
+from django.conf.urls.static import static
+
+from server.settings import MEDIA_URL, MEDIA_ROOT
+
 from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include(("frontend.urls", "frontend"))),
-    # path("login/", auth_views.LoginView.as_view()),
-    # path("logout", auth_views.LogoutView.as_view()),
     path("api/auth/", obtain_jwt_token),
     path("api/", include("core.urls")),
-    # path("", include("frontend.urls")),
+    path("api/", include("users.urls")),
+    path("imagepool/", include("imagepool.urls")),
 ]
+
+urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)

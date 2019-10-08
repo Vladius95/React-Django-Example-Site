@@ -21,7 +21,7 @@ interface UsersPageProps {
 }
 
 const UsersPage: React.FC<RouteComponent<UsersAction, UsersPageProps>> = props => {
-  const [isLoading] = useRequest("data/users/user-list.json", "USERS_SUCCESS", "users");
+  const [isLoading] = useRequest("/api/get-user-list/", "USERS_SUCCESS", "users");
 
   const [searchText, changeSearchText] = React.useState("");
   const [viewType, setViewType] = React.useState(ViewTypes.list);

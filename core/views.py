@@ -1,10 +1,8 @@
-from django.http import HttpResponseRedirect
-from django.contrib.auth.models import User
 from rest_framework import permissions, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import UserSerializer, UserSerializerWithToken
+from core.serializers import UserSerializer, UserSerializerWithToken
 
 
 @api_view(["GET"])
@@ -17,7 +15,7 @@ def current_user(request):
     return Response(serializer.data)
 
 
-class UserList(APIView):
+class CreateUser(APIView):
     """
     Create a new user. It's called 'UserList' because normally we'd have a get
     method here too, for retrieving a list of all User objects.

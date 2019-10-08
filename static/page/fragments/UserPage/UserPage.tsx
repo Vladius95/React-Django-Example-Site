@@ -44,7 +44,7 @@ const UserPage: React.FC<RouteComponent<UserAction, UserProps>> = React.memo(pro
 
       <div className="user-photos">
         <MasonryGrid>
-          {props.user.photos.map((photo: Photo, key: number) => (
+          {[].map((photo: Photo, key: number) => (
             <div key={key} className="user-photos__item">
               <img src={photo.url} alt="User photo" className="user-photos__image" />
             </div>

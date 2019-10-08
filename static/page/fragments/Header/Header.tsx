@@ -6,14 +6,11 @@ import createBrowserHistory from "history/createBrowserHistory";
 
 import "./Header.scss";
 import { RouteLink } from "static/page/components/CommonLink";
+import { HeaderUserPanel } from "./HeaderUserPanel";
 
 const history = createBrowserHistory();
 
 export interface HeaderProps {}
-
-function areEqualHeaderProps(prevProps: HeaderProps, nextProps: HeaderProps) {
-  return false;
-}
 
 export const Header: React.FC<HeaderProps> = React.memo(({}) => {
   return (
@@ -37,8 +34,9 @@ export const Header: React.FC<HeaderProps> = React.memo(({}) => {
           </ul>
         </BrowserRouter>
       </nav>
+      <HeaderUserPanel />
     </header>
   );
-}, areEqualHeaderProps);
+});
 
 Header.displayName = "Header";

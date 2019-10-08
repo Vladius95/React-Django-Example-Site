@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     # custom
     "core.apps.CoreConfig",
     "frontend",
+    "users",
+    "imagepool",
     # libs
     "rest_framework",
     "corsheaders",
@@ -79,7 +81,9 @@ TEMPLATES = [
 WSGI_APPLICATION = "server.wsgi.application"
 
 REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+    ),
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
         "rest_framework.authentication.SessionAuthentication",
@@ -95,7 +99,7 @@ CORS_ORIGIN_WHITELIST = ("http://127.0.0.1:8000",)
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "data-example",
+        "NAME": "db1",
         "USER": "postgres",
         "PASSWORD": "root",
         "HOST": "localhost",
@@ -116,6 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
+AUTH_USER_MODEL = "users.CustomUser"
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -139,8 +144,8 @@ STATIC_URL = "/build/"
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "build")]
 
-# LOGIN_URL = "login"
-# LOGOUT_URL = "logout"
+MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
+MEDIA_URL = "/media/"
 
 JWT_AUTH = {"JWT_RESPONSE_PAYLOAD_HANDLER": "server.utils.my_jwt_response_handler"}
 

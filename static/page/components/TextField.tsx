@@ -21,11 +21,11 @@ interface MaskInputProps extends CommonInputProps {
 }
 
 export const MaskInput: React.FC<MaskInputProps> = ({ extraClass = "", ...inputProps }) => (
-  <InputMask {...inputProps} type="text" className={`common-input ${extraClass}`} />
+  <InputMask {...inputProps} type="" className={`common-input ${extraClass}`} />
 );
 
 // https://material.io/components/text-fields/#
-export interface TextFieldProps extends Omit<CommonInputProps, "id" | "type" | "className"> {
+export interface TextFieldProps extends Omit<CommonInputProps, "id" | "className"> {
   hasError?: boolean;
   errorMessage?: string;
   helperMessage?: string;

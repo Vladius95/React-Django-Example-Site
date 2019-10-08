@@ -40,7 +40,7 @@ const UserPhotoPage: React.FC<RouteComponent<UserAction, UserPhotoPageProps>> = 
     );
   }
 
-  const photo = props.user.photos.find(p => p.id === photoId);
+  const photo = [].find(p => p.id === photoId);
 
   if (!photo) {
     return <Message message="User Not Found" extraClass="user-page__message" />;

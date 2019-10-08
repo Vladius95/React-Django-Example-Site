@@ -1,3 +1,4 @@
+import "./Page.scss";
 import React from "react";
 // BrowserRouter - синхронизация ui и адреса
 import { Redirect, Route, Switch, HashRouter, RouteProps } from "react-router-dom";
@@ -12,17 +13,27 @@ import { Provider } from "react-redux";
 import { mergedReducers } from "static/stores/root";
 import { createStore } from "redux";
 
-import { isAuthorizated } from "static/utils/requests";
+import { isAuthorizated, logIn, logout } from "static/utils/requests";
 import { LoginPage } from "./fragments/LoginPage/LoginPage";
-
-import "./Page.scss";
+import { RegistrationPage } from "./fragments/RegistrationPage/RegistrationPage";
 
 const rootStore = createStore(mergedReducers);
-const SignUp = () => <div>SIGNUP, PLEASE</div>;
+
 export class Page extends React.Component {
-  componentDidMount() {
-    isAuthorizated();
-  }
+  state = {
+    isStart: false
+  };
+
+  // constructor(props) {
+  //   super(props);
+  //   logout();
+  // }
+
+  // componentDidMount() {
+  //   if (!this.state.isStart) {
+  //     logIn().then(() => this.setState({ isStart: true }));
+  //   }
+  // }
 
   render() {
     return (
@@ -39,12 +50,13 @@ export class Page extends React.Component {
   }
 
   renderLayout() {
-    console.log(localStorage.getItem("token"));
+    console.log(localStorage.getItem("token"), isAuthorizated() ? "/users/" : "/registration/");
+
     return (
       <main className="page-layout">
+        <Redirect exact from="/" to={isAuthorizated() ? "/users/" : "/registration/"} />
         <Switch>
-          <Redirect exact from="/" to="/login/" />
-          <Route key="registration" path="/registration/" component={SignUp} />
+          <Route key="registration" path="/registration/" component={RegistrationPage} />
           <Route key="login" path="/login/" component={LoginPage} />
           <Route key="users" path="/users/" component={UsersPageConnect} />
           <Route key="user" path="/user/:id" component={UserPageConnect} />

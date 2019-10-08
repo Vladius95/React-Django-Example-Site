@@ -1,18 +1,15 @@
+import "./UserAvatar.scss";
 import * as React from "react";
 import { useLazyImageLoad } from "static/hooks/lazy-image-load";
 
-import "./UserAvatar.scss";
+const defaultAvatar = require("./default-avatar.svg");
 
 export interface UserAvatarProps {
-  avatar: string;
+  avatar?: string;
   extraClass?: string;
 }
 
-function areEqualUserAvatarProps(prevProps: UserAvatarProps, nextProps: UserAvatarProps) {
-  return true;
-}
-
-export const UserAvatar: React.FC<UserAvatarProps> = React.memo(({ avatar, extraClass = "" }) => {
+export const UserAvatar: React.FC<UserAvatarProps> = React.memo(({ avatar = defaultAvatar, extraClass = "" }) => {
   useLazyImageLoad("user-avatar--lazy");
 
   return (
@@ -23,6 +20,6 @@ export const UserAvatar: React.FC<UserAvatarProps> = React.memo(({ avatar, extra
       className={`user-avatar user-avatar--lazy ${extraClass}`}
     />
   );
-}, areEqualUserAvatarProps);
+});
 
 UserAvatar.displayName = "UserAvatar";

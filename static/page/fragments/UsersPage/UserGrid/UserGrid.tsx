@@ -16,8 +16,8 @@ export const UserGrid: React.FC<UserGridProps> = ({ users, extraClass = "" }) =>
   return (
     <ul className={`user-grid ${extraClass}`}>
       {users.map(user => (
-        <li key={user.id} className="user-grid__item">
-          <Link to={`/user/${user.id}`}>
+        <li key={user.login} className="user-grid__item">
+          <Link to={`/user/${user.login}`}>
             <UserAvatar avatar={user.avatar} extraClass="user-grid__avatar" />
           </Link>
         </li>

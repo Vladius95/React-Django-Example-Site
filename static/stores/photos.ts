@@ -23,7 +23,8 @@ function toPhoto(params: Photo, userId: number): Photo {
 export const photosReducer: Reducer<PhotosState, PhotosAction> = (users: PhotosState = [], action: PhotosAction) => {
   switch (action.type) {
     case "PHOTOS_SUCCESS":
-      return flatten(action.users.map(u => u.photos));
+      return [];
+    // return flatten(action.users.map(u => u.photos));
   }
   return users;
 };

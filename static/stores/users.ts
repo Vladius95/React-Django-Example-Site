@@ -2,12 +2,14 @@ import { createStore, Action, Store, Reducer } from "redux";
 import { Photo } from "./photos";
 
 export interface IUser {
-  id: number;
-  name: string;
-  avatar: string;
-  age: number;
-  instagram: string;
-  photos: Photo[];
+  email: string;
+  login: string;
+  firstname?: string;
+  secondname?: string;
+  avatar?: string;
+  age?: number;
+  // instagram: string;
+  // photos: Photo[];
 }
 
 export type IUserList = IUser[];
@@ -22,11 +24,7 @@ export interface UsersAction extends Action {
 export const usersReducer: Reducer<UsersState, UsersAction> = (users: UsersState = [], action: UsersAction) => {
   switch (action.type) {
     case "USERS_SUCCESS":
-      return action.users.map(u => {
-        const avatar = `data/users/${u.id}/${u.id}.jpg`;
-        u["avatar"] = avatar;
-        return u;
-      });
+      return action.users;
   }
 
   return users;
@@ -46,7 +44,7 @@ function toObservable(store: Store) {
 
 export function getFilteredUserList(users: IUserList, searchText: string): IUserList {
   const isMatch = (name: string): boolean => name.toLocaleLowerCase().indexOf(searchText) !== -1;
-  const filteredUserList = users.filter((user: IUser) => isMatch(user.name));
+  const filteredUserList = users.filter((user: IUser) => isMatch(user.firstname) || isMatch(user.secondname));
 
   return filteredUserList;
 }

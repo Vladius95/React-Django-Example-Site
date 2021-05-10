@@ -47,7 +47,7 @@
     "classnames": "^2.2.6",
     "decko": "^1.2.0",
     "express": "^4.17.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "query-string": "^6.8.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
